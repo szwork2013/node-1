@@ -1,0 +1,21 @@
+{
+  "env": {
+    "host": "localhost",
+    "dev": {
+      "host": "http://localhost",
+      "port": 3000,
+      "proxyPort": 4000,
+      "browserSyncReloadDelay": 500
+    },
+    "stage": {
+      "port": 3000
+    },
+    "prod": {
+      "port": 3000
+    }
+  },
+  "main": "app.js",
+  "path": {
+    "public": "./public"
+  }
+}
