@@ -26,11 +26,13 @@
     "lodash": "^2.4.1",
     "resolve": "^1.0.0",
     "uglify-js": "^2.4.15",
+    "vinyl-transform": "^1.0.0",
     "vinyl-source-stream": "^0.1.1",
     "yargs": "^3.27.0"
   },
   "dependencies": {
     "angular": "^1.4.7",
-    "angular-ui-router": "^0.2.15"
+    "angular-ui-router": "^0.2.15",
+    "gulp-streamify": "^1.0.2"
   }
 }

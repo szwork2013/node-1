@@ -5,7 +5,7 @@ var http = require('http');
 var path = require('path');
 var app = express();
 var config = require('./config.json');
-var argv = require('yargs');
+var argv = require('yargs').argv;
 var server = http.createServer(app);
 
 app.get('/', function(req, res) {
@@ -13,8 +13,9 @@ app.get('/', function(req, res) {
 });
 
 // default
+var env = process.env.NODE_ENV || argv.env;
 var port = 3000, host = config.env.host || 'localhost';
-switch (argv.env) {
+switch (env) {
   case 'production':
     port = config.env.prod.port || port;
     break;
