@@ -14,6 +14,7 @@ plugins.source = require('vinyl-source-stream');
 plugins.streamify = require('gulp-streamify');
 plugins.del = require('del');
 plugins.mainBowerFiles = require('main-bower-files');
+plugins.less = require('gulp-less');
 
 
 config.env.current = process.env.NODE_ENV || argv.env;
@@ -27,10 +28,11 @@ gulp.task('nodemon', getTask('nodemon'));
 gulp.task('browser-sync', ['nodemon'], getTask('browser-sync'));
 gulp.task('bs-reload', getTask('bs-reload'));
 gulp.task('bower', getTask('bower'));
+gulp.task('bootstrap', getTask('bootstrap'));
 
 //
-gulp.task('install', ['build-vendor', 'build-app', 'bower']);
-gulp.task('default', ['build-vendor', 'build-app', 'browser-sync', 'bower'], getTask('watch'));
+gulp.task('install', ['build-vendor', 'build-app', 'bower', 'bootstrap']);
+gulp.task('default', ['install'], getTask('watch'));
 
 
 function getNPMPackageIds() {
