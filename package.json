@@ -12,6 +12,7 @@
     "del": "^0.1.2",
     "express": "^4.8.3",
     "gulp": "^3.8.7",
+    "gulp-less": "^3.0.3",
     "gulp-nodemon": "^1.0.4",
     "gulp-streamify": "^1.0.2",
     "gulp-uglify": "^0.3.1",
