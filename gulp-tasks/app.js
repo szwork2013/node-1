@@ -2,7 +2,7 @@
 
 module.exports = function(gulp, plugins, npmPackages, config) {
   return function() {
-    var b = plugins.browserify(config.path.public + '/src/app/app.js', { debug: !config.production });
+    var b = plugins.browserify('./src/client/app/app.js', { debug: !config.production });
 
     npmPackages().forEach(function (id) { b.external(id); });
 
