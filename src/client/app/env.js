@@ -2,7 +2,7 @@
 
 module.exports = {
   appName: 'FeedMe',
-  baseTemplateDir: '/src/app/partials/',
+  baseTemplateDir: '/partials/',
 
   templatePath: function (view) { return [this.baseTemplateDir, view].join(''); }
 };
