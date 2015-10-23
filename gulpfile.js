@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp');
-var _ = require('lodash');
 var config = require('./config.json');
 var argv = require('yargs').argv;
 
@@ -9,10 +8,8 @@ var plugins = {};
 plugins.browserSync = require('browser-sync');
 plugins.nodemon = require('gulp-nodemon');
 plugins.uglify = require('gulp-uglify');
-plugins.gutil = require('gulp-util');
 plugins.browserify = require('browserify');
 plugins.nodeResolve = require('resolve');
-plugins.minifyCss = require('gulp-minify-css');
 plugins.source = require('vinyl-source-stream');
 plugins.streamify = require('gulp-streamify');
 plugins.del = require('del');
@@ -31,11 +28,13 @@ gulp.task('bs-reload', getTask('bs-reload'));
 
 //
 gulp.task('install', ['clean', 'build-vendor', 'build-app']);
-gulp.task('default', ['clean', 'build-vendor', 'build-app', 'browser-sync'], getTask('watch'));
+gulp.task('default', ['build-vendor', 'build-app', 'browser-sync'], getTask('watch'));
 
 
 function getNPMPackageIds() {
-  return _.keys(require('./package.json').dependencies) || [];
+  var dependencies = require('./package.json').dependencies;
+
+  return typeof dependencies == "undefined" ? [] : Object.keys(dependencies);
 }
 
 function getTask(task) {
