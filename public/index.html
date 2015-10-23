@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>index.html</title>
-    <link href="style.css" rel="stylesheet"/>
+    <link href="" rel="stylesheet"/>
 </head>
 <body>
 <div ui-view>
-    Our Angular app 'MyApp' will be loaded here if all turns out well
+    Our Angular app 'FeedMe' will be loaded here if all turns out well
 </div>
 <script src="dist/vendor.js"></script>
 <script src="dist/app.js"></script>
 
 <script type="text/javascript">
     'use strict';
-    // Bootstraps ng-app MyApp to window.document using ng.boostrap
-    // notice that 'angular' global is available through bundled vendor.js
-    // and ng-module 'MyApp' is available from bundled app.js
+
     try {
         angular.element(document).ready(function() {
-            angular.bootstrap(document, ['MyApp']);
+            angular.bootstrap(document, ['FeedMe']);
         });
     } catch (e) {
         console.error(e.message);

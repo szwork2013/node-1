@@ -1,5 +1,7 @@
 {
   "env": {
+    "current": "",
+    "debug": false,
     "host": "localhost",
     "dev": {
       "host": "http://localhost",

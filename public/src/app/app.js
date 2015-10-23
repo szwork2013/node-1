@@ -3,17 +3,13 @@
 require('angular');
 require('angular-ui-router');
 
-// require controllers ng-module definition
 require('./controllers');
 
-// require environment settings
 var env = require('./env');
-var _ = require('lodash');
 
-
-var app = module.exports = angular.module('MyApp', [
+var app = module.exports = angular.module('FeedMe', [
   'ui.router',
-  'MyApp.controllers'
+  'FeedMe.controllers'
 ]);
 
 app.config(function ($stateProvider, $urlRouterProvider) {

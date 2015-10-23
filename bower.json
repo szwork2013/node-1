@@ -1,0 +1,12 @@
+{
+  "name": "feedme",
+  "description": "",
+  "main": "app.js",
+  "license": "MIT",
+  "homepage": "https://github.com/UbikZ/feedme-node",
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5"
+  }
+}

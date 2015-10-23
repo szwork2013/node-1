@@ -2,9 +2,6 @@
   "name": "feedme",
   "version": "0.0.0",
   "main": "app.js",
-  "scripts": {
-    "start": "node ./app"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ubikz/feedme.git"
@@ -18,21 +15,25 @@
     "gulp": "^3.8.7",
     "gulp-browserify": "^0.5.0",
     "gulp-concat": "^2.3.4",
+    "gulp-load-plugins": "^1.0.0",
+    "gulp-minify-css": "^1.2.1",
     "gulp-nodemon": "^1.0.4",
     "gulp-rename": "^1.2.0",
+    "gulp-streamify": "^1.0.2",
     "gulp-uglify": "^0.3.1",
     "gulp-util": "^3.0.0",
-    "gulp-minify-css": "^1.2.1",
     "lodash": "^2.4.1",
     "resolve": "^1.0.0",
     "uglify-js": "^2.4.15",
-    "vinyl-transform": "^1.0.0",
     "vinyl-source-stream": "^0.1.1",
+    "vinyl-transform": "^1.0.0",
     "yargs": "^3.27.0"
   },
-  "dependencies": {
-    "angular": "^1.4.7",
-    "angular-ui-router": "^0.2.15",
-    "gulp-streamify": "^1.0.2"
+  "dependencies": {},
+  "browser": {
+    "angular": "./bower_components/angular/angular.js",
+    "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js",
+    "jquery": "./bower_components/dist/jquery.js",
+    "bootsrap": "./bower_components/bootstrap/dist/js/bootstrap.js"
   }
 }
