@@ -15,24 +15,31 @@ plugins.streamify = require('gulp-streamify');
 plugins.del = require('del');
 plugins.mainBowerFiles = require('main-bower-files');
 plugins.less = require('gulp-less');
+plugins.concatCss = require('gulp-concat-css');
 
+var tasksMapper = {
+  'clean': [],
+  'vendor': [],
+  'app': [],
+  'nodemon': [],
+  'browser-sync': ['nodemon'],
+  'bs-reload': [],
+  'bower': [],
+  'bootstrap': [],
+  'css': [],
+};
 
 config.env.current = process.env.NODE_ENV || argv.env;
 config.env.debug = (config.env.current === 'production');
 
 // Bind tasks
-gulp.task('clean', getTask('clean'));
-gulp.task('build-vendor', getTask('vendor'));
-gulp.task('build-app', getTask('app'));
-gulp.task('nodemon', getTask('nodemon'));
-gulp.task('browser-sync', ['nodemon'], getTask('browser-sync'));
-gulp.task('bs-reload', getTask('bs-reload'));
-gulp.task('bower', getTask('bower'));
-gulp.task('bootstrap', getTask('bootstrap'));
+Object.keys(tasksMapper).forEach(function(task) {
+  gulp.task(task, this[task] || [], getTask(task));
+}, tasksMapper);
 
-//
-gulp.task('javascript', ['build-vendor', 'build-app']);
-gulp.task('style', ['bower', 'bootstrap']);
+// Build tasks
+gulp.task('javascript', ['vendor', 'app']);
+gulp.task('style', ['bower', 'bootstrap', 'css']);
 gulp.task('install', ['javascript', 'style']);
 gulp.task('default', ['install'], getTask('watch'));
 
