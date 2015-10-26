@@ -37,12 +37,10 @@ gulp.task('install', ['javascript', 'style']);
 gulp.task('default', ['install'], getTask('watch'));
 
 
-function getNPMPackageIds() {
-  var dependencies = require('./package.json').dependencies;
-
-  return typeof dependencies == "undefined" ? [] : Object.keys(dependencies);
-}
-
 function getTask(task) {
-  return require('./gulp-tasks/' + task)(gulp, plugins, getNPMPackageIds, config);
+  return require('./gulp-tasks/' + task)(gulp, plugins, function() {
+    var dependencies = require('./package.json').dependencies;
+
+    return typeof dependencies == "undefined" ? [] : Object.keys(dependencies);
+  }, config);
 }
