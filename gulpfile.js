@@ -16,6 +16,7 @@ plugins.del = require('del');
 plugins.mainBowerFiles = require('main-bower-files');
 plugins.less = require('gulp-less');
 plugins.concatCss = require('gulp-concat-css');
+plugins.minifyCss = require('gulp-minify-css');
 
 var tasksMapper = {
   'clean': [],
@@ -30,7 +31,7 @@ var tasksMapper = {
 };
 
 config.env.current = process.env.NODE_ENV || argv.env;
-config.env.debug = (config.env.current === 'production');
+config.env.debug = (config.env.current !== 'production');
 
 // Bind tasks
 Object.keys(tasksMapper).forEach(function(task) {
@@ -40,7 +41,7 @@ Object.keys(tasksMapper).forEach(function(task) {
 // Build tasks
 gulp.task('javascript', ['vendor', 'app']);
 gulp.task('style', ['bower', 'bootstrap', 'css']);
-gulp.task('install', ['javascript', 'style']);
+gulp.task('install', ['clean', 'javascript', 'style']);
 gulp.task('default', ['install'], getTask('watch'));
 
 

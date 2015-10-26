@@ -2,8 +2,14 @@
 
 module.exports = function(gulp, plugins, npmPackages, config) {
   return function() {
-    return gulp.src([config.path.public + '/lib/**/*.css', 'src/client/css/**/*.css'])
-      .pipe(plugins.concatCss('app.css'))
-      .pipe(gulp.dest(config.path.public + '/dist'));
+    var stream = gulp.src([config.path.public + '/lib/**/*.css', 'src/client/css/**/*.css'])
+      .pipe(plugins.concatCss(config.env.debug ? 'app.css' : 'app.min.css'));
+
+    if (!config.env.debug) {
+      stream
+        .pipe(plugins.minifyCss());
+    }
+
+    return stream.pipe(gulp.dest(config.path.public + '/dist'));
   };
 };

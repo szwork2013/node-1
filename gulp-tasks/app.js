@@ -2,13 +2,13 @@
 
 module.exports = function(gulp, plugins, npmPackages, config) {
   return function() {
-    var b = plugins.browserify('./src/client/app/app.js', { debug: !config.production });
+    var b = plugins.browserify('./src/client/app/app.js', { debug: config.env.debug });
 
     npmPackages().forEach(function (id) { b.external(id); });
 
-    var stream = b.bundle().pipe(plugins.source('app.js'));
+    var stream = b.bundle().pipe(plugins.source(config.env.debug ? 'app.js' : 'app.min.js'));
 
-    if (config.production) {
+    if (!config.env.debug) {
       stream.pipe(plugins.streamify(plugins.uglify()));
     }
 

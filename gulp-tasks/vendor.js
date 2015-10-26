@@ -2,15 +2,15 @@
 
 module.exports = function(gulp, plugins, npmPackages, config) {
   return function() {
-    var b = plugins.browserify({ debug: !config.production });
+    var b = plugins.browserify({ debug: !!config.env.debug });
 
     npmPackages().forEach(function (id) {
       b.require(plugins.nodeResolve.sync(id), { expose: id });
     });
 
-    var stream = b.bundle().pipe(plugins.source('vendor.js'));
+    var stream = b.bundle().pipe(plugins.source(config.env.debug ? 'vendor.js' : 'vendor.min.js'));
 
-    if (config.production) {
+    if (!config.env.debug) {
       stream.pipe(plugins.streamify(plugins.uglify()));
     }
 
