@@ -26,8 +26,9 @@ var tasksMapper = {
   'browser-sync': ['nodemon'],
   'bs-reload': [],
   'bower': [],
-  'bootstrap': [],
-  'css': [],
+  'bootstrap-variable': ['bower'],
+  'bootstrap-compile': ['bootstrap-variable'],
+  'css': ['bootstrap-compile'],
 };
 
 config.env.current = process.env.NODE_ENV || argv.env;
@@ -40,10 +41,8 @@ Object.keys(tasksMapper).forEach(function(task) {
 
 // Build tasks
 gulp.task('javascript', ['vendor', 'app']);
-gulp.task('style', ['bower', 'bootstrap', 'css']);
-gulp.task('install', ['clean', 'javascript', 'style']);
+gulp.task('install', ['javascript', 'css']);
 gulp.task('default', ['install'], getTask('watch'));
-
 
 function getTask(task) {
   return require('./gulp-tasks/' + task)(gulp, plugins, function() {
