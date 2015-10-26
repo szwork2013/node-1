@@ -31,7 +31,9 @@ gulp.task('bower', getTask('bower'));
 gulp.task('bootstrap', getTask('bootstrap'));
 
 //
-gulp.task('install', ['build-vendor', 'build-app', 'bower', 'bootstrap']);
+gulp.task('javascript', ['build-vendor', 'build-app']);
+gulp.task('style', ['bower', 'bootstrap']);
+gulp.task('install', ['javascript', 'style']);
 gulp.task('default', ['install'], getTask('watch'));
 
 
