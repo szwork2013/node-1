@@ -43,7 +43,7 @@ Object.keys(tasksMapper).forEach(function(task) {
 
 // Build tasks
 gulp.task('javascript', ['vendor', 'app']);
-gulp.task('install', ['javascript', 'css']);
+gulp.task('install', ['javascript', 'css'], getTask('clean'));
 gulp.task('default', ['browser-sync'], getTask('watch'));
 
 function getTask(task) {
