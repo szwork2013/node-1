@@ -25,11 +25,13 @@ var tasksMapper = {
   'nodemon': [],
   'browser-sync': ['nodemon'],
   'bs-reload': [],
-  'bower': [],
-  'bootstrap-variable': ['bower'],
+  'bootstrap-copy': [],
+  'bootstrap-variable': ['bootstrap-copy'],
   'bootstrap-compile': ['bootstrap-variable'],
   'css': ['bootstrap-compile'],
 };
+
+var browserDependencies = ['angular', 'angular-ui-router', 'bootstrap', 'jquery'];
 
 config.env.current = process.env.NODE_ENV || argv.env;
 config.env.debug = (config.env.current !== 'production');
@@ -42,12 +44,14 @@ Object.keys(tasksMapper).forEach(function(task) {
 // Build tasks
 gulp.task('javascript', ['vendor', 'app']);
 gulp.task('install', ['javascript', 'css']);
-gulp.task('default', ['install'], getTask('watch'));
+gulp.task('default', ['browser-sync'], getTask('watch'));
 
 function getTask(task) {
   return require('./gulp-tasks/' + task)(gulp, plugins, function() {
-    var dependencies = require('./package.json').dependencies;
+    var dependenciesObj = require('./package.json').dependencies;
 
-    return typeof dependencies == "undefined" ? [] : Object.keys(dependencies);
+    return Object.keys(dependenciesObj).filter(function(element) {
+      return browserDependencies.indexOf(element) != -1;
+    });
   }, config);
 }

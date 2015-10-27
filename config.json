@@ -18,6 +18,10 @@
   },
   "main": "app.js",
   "path": {
-    "public": "./public"
+    "public": "./public",
+    "server": {
+      "controller": "./src/server/controller",
+      "model": "./src/server/model"
+    }
   }
 }
