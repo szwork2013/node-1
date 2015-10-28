@@ -2,11 +2,9 @@
 
 module.exports = function(gulp, plugins, npmPackages, config) {
   return function() {
-    var b = plugins.browserify({ debug: !!config.env.debug });
+    var b = plugins.browserify({ debug: config.env.debug });
 
     npmPackages().forEach(function (id) {
-      console.info(id);
-      console.info(plugins.nodeResolve.sync(id));
       b.require(plugins.nodeResolve.sync(id), { expose: id });
     });
 
