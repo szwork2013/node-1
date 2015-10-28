@@ -25,13 +25,27 @@ var tasksMapper = {
   'nodemon': [],
   'browser-sync': ['nodemon'],
   'bs-reload': [],
-  'bootstrap-copy': [],
-  'bootstrap-variable': ['bootstrap-copy'],
+  'node-copy': [],
+  'bootstrap-variable': ['node-copy'],
   'bootstrap-compile': ['bootstrap-variable'],
   'css': ['bootstrap-compile'],
 };
 
-var browserDependencies = ['angular', 'angular-ui-router', 'bootstrap', 'jquery'];
+var browserDependencies = [
+  'angular',
+  'angular-ui-router',
+  'angular-ui-sortable',
+  'ion-rangeslider',
+  'angular-translate',
+  'bootstrap',
+  'jquery',
+  'jquery-ui',
+  'metismenu',
+  'oclazyload',
+  'pace',
+  'sweetalert',
+  'toastr',
+];
 
 config.env.current = process.env.NODE_ENV || argv.env;
 config.env.debug = (config.env.current !== 'production');
