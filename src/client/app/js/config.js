@@ -5,10 +5,12 @@ var env = require('./env');
 module.exports = function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
-      url: '/home',
+      url: '/',
       templateUrl: env.templatePath('home.html'),
-      controller: 'home.controller'
-    });
+      controller: 'home.controller',
+      showHeader: true,
+    })
+  ;
 
   $urlRouterProvider.otherwise('/home');
 };

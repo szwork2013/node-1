@@ -1,14 +1,22 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html ng-app="feedme">
+
 <head>
-    <meta charset="UTF-8">
-    <title>index.html</title>
-    <link href="dist/app.css" rel="stylesheet"/>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title page-title></title>
+
+
+    <link href="dist/app.css" rel="stylesheet">
 </head>
-<body>
-<div ui-view>
-    Our Angular app 'FeedMe' will be loaded here if all turns out well
-</div>
+
+
+<body ng-controller="main.controller as main" class="{{$state.current.data.specialClass}}" landing-scrollspy id="page-top">
+
+<div ui-view></div>
+
 <script src="dist/vendor.js"></script>
 <script src="dist/app.js"></script>
 

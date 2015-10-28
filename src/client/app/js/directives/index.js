@@ -2,4 +2,4 @@
 
 var app = require('angular').module('feedme.directives', []);
 
-app.directive('loading.directive', require('./loading'));
+app.directive('uievent.directive', ['$parse', require('./uievent')($parse)]);
