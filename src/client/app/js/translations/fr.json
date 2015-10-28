@@ -1,0 +1,24 @@
+{
+  "DASHBOARD": "Dashboard",
+  "GRAPHS": "Graphs",
+  "MAILBOX": "Mailbox",
+  "WIDGETS": "Widgets",
+  "METRICS": "Metrics",
+  "FORMS": "Forms",
+  "APPVIEWS": "App views",
+  "OTHERPAGES": "Other pages",
+  "UIELEMENTS": "UI elements",
+  "MISCELLANEOUS": "Miscellaneous",
+  "GRIDOPTIONS": "Grid options",
+  "TABLES": "Tables",
+  "COMMERCE": "E-commerce",
+  "GALLERY": "Gallery",
+  "MENULEVELS": "Menu levels",
+  "ANIMATIONS": "Animations",
+  "LANDING": "Landing page",
+  "LAYOUTS": "Layouts",
+
+  "WELCOME": "Welcome",
+  "MESSAGEINFO": "You have 42 messages and 6 notifications.",
+  "SEARCH": "Search for something..."
+}

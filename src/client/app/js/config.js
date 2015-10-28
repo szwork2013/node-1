@@ -2,15 +2,20 @@
 
 var env = require('./env');
 
-module.exports = function ($stateProvider, $urlRouterProvider) {
+module.exports = function ($stateProvider, $urlRouterProvider, $translateProvider) {
   $stateProvider
-    .state('home', {
-      url: '/',
+    .state('app', {
+      abstract: true,
+      url: '/app',
+      templateUrl: env.templatePath('common/content.html'),
+    })
+    .state('app.home', {
+      url: '/home',
       templateUrl: env.templatePath('home.html'),
-      controller: 'home.controller',
-      showHeader: true,
     })
   ;
 
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('app/home');
+
+  require('./translations')($translateProvider);
 };
