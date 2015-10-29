@@ -1,5 +1,8 @@
 'use strict';
 
+// Global
+window.jQuery = require('jquery');
+
 // External
 require('angular');
 require('angular-ui-router');
