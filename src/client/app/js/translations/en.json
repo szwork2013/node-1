@@ -1,24 +1,27 @@
 {
-  "DASHBOARD": "Dashboard",
-  "GRAPHS": "Graphs",
-  "MAILBOX": "Mailbox",
-  "WIDGETS": "Widgets",
-  "METRICS": "Metrics",
-  "FORMS": "Forms",
-  "APPVIEWS": "App views",
-  "OTHERPAGES": "Other pages",
-  "UIELEMENTS": "UI elements",
-  "MISCELLANEOUS": "Miscellaneous",
-  "GRIDOPTIONS": "Grid options",
-  "TABLES": "Tables",
-  "COMMERCE": "E-commerce",
-  "GALLERY": "Gallery",
-  "MENULEVELS": "Menu levels",
-  "ANIMATIONS": "Animations",
-  "LANDING": "Landing page",
-  "LAYOUTS": "Layouts",
+  "base": {
+    "header": {
+      "search": "Search somehting...",
+      "languages": "Languages",
+      "language": {
+        "english" : "English",
+        "french": "French"
+      },
+      "logout": "Logout"
+    },
+    "content": {},
+    "left-sidebar": {
+      "home": "Home",
+      "accounts": "Account",
+      "account": {
+        "profile": "Profile",
+        "contact": "Contact"
+      }
+    },
+    "right-sidebar": {
 
-  "WELCOME": "Welcome",
-  "MESSAGEINFO": "You have 42 messages and 6 notifications.",
-  "SEARCH": "Search for something..."
+    },
+    "chat": {},
+    "footer": {}
+  }
 }
