@@ -7,6 +7,11 @@
         "english" : "English",
         "french": "French"
       },
+      "alert": {
+        "time": "{{ number }} minutes ago",
+        "twitter": "{{ number }} new followers",
+        "all": "See all alerts"
+      },
       "logout": "Logout"
     },
     "content": {},

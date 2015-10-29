@@ -13,9 +13,13 @@ module.exports = function ($stateProvider, $urlRouterProvider, $translateProvide
       url: '/home',
       templateUrl: env.templatePath('home.html'),
     })
-    .state('app.account', {
-      url: '/account',
-      templateUrl: env.templatePath('account.html'),
+    .state('app.account.profile', {
+      url: '/profile',
+      templateUrl: env.templatePath('profile.html'),
+    })
+    .state('app.account.contact', {
+      url: '/contact',
+      templateUrl: env.templatePath('contact.html'),
     })
   ;
 
