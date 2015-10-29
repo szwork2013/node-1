@@ -13,6 +13,10 @@ module.exports = function ($stateProvider, $urlRouterProvider, $translateProvide
       url: '/home',
       templateUrl: env.templatePath('home.html'),
     })
+    .state('app.account', {
+      url: '/account',
+      templateUrl: env.templatePath('account.html'),
+    })
   ;
 
   $urlRouterProvider.otherwise('app/home');
