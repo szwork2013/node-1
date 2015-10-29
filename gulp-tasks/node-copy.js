@@ -6,7 +6,7 @@ module.exports = function(gulp, plugins, npmPackages, config) {
 
     gulp.src([
         // Font-Awesome
-        nodePath + '/font-awesome/css/font-awesome.css',
+        nodePath + '/font-awesome/fonts/*.*',
       ], { base: nodePath }
     ).pipe(gulp.dest(config.path.public + '/dist'));
 
@@ -15,7 +15,7 @@ module.exports = function(gulp, plugins, npmPackages, config) {
         nodePath + '/bootstrap/less/!(variables).less',
         nodePath + '/bootstrap/less/mixins/*.less',
         // Font Awesome
-        nodePath + '/font-awesome/fonts/*.*',
+        nodePath + '/font-awesome/css/font-awesome.css',
         // Animate
         nodePath + '/animate.css/animate.css',
       ], { base: nodePath }
