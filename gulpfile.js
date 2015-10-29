@@ -35,6 +35,7 @@ var browserDependencies = [
   'angular',
   'angular-ui-router',
   'angular-ui-sortable',
+  'angular-ui-bootstrap',
   'ion-rangeslider',
   'angular-translate',
   'bootstrap-ui',
