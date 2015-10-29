@@ -8,7 +8,7 @@ require('angular');
 require('angular-ui-router');
 require('angular-translate');
 require('angular-ui-bootstrap');
-require('pace');
+require('pace').start();
 
 // Internal
 require('./controllers');
