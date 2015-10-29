@@ -1,7 +1,7 @@
 'use strict';
 
 // Global
-window.jQuery = require('jquery');
+window.$ = window.jQuery = require('jquery');
 
 // External
 require('angular');
