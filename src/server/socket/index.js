@@ -11,10 +11,12 @@ module.exports = function(io, conf) {
     console.log('Client ' + uuid + ' connected');
     socket.emit('server.user.notify', socketMsg('Welcome ' + socket.uuid, 'info'));
     socket.broadcast.emit('server.user.notify', socketMsg('User ' + socket.uuid + ' connected !', 'warning'));
+    io.sockets.emit('server.users.number', socketMsg(Object.keys(users).length));
 
     socket.on('disconnect', function () {
       console.log('Client ' + uuid + ' deconnected');
-      delete users[socket.username];
+      delete users[socket.uuid];
+      socket.broadcast.emit('server.users.number', socketMsg(Object.keys(users).length));
     });
 
     /*

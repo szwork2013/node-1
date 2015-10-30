@@ -1,9 +1,10 @@
-<div class="small-chat-box ng-small-chat fadeInRight animated" ng-init="openChat=false" ng-show="openChat">
-    <div class="heading" draggable="true">
+<div class="small-chat-box ng-small-chat fadeInRight animated"
+     ng-show="openChat" ng-controller="chat.controller" ng-cloak>
+    <div class="heading">
         <small class="chat-date pull-right">
-            02.19.2015
+            {{ userNumber }} {{ 'chat.users-online' | translate }}
         </small>
-        Small chat
+        {{ 'chat.title' | translate }}
     </div>
     <div class="content" chat-slim-scroll>
 

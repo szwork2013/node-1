@@ -12,10 +12,20 @@
 </head>
 
 
-<body ng-controller="main.controller as main" class="pace-done" id="page-top">
+<body ng-controller="main.controller" class="pace-done" id="page-top">
+<div id="wrapper">
+    <div ng-include="'views/common/left-sidebar.html'"></div>
+    <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
+        <div ng-include="'views/common/header.html'"></div>
 
-<div ui-view></div>
+        <div ui-view></div>
 
+        <div ng-include="'views/common/chat.html'"></div>
+        <div ng-include="'views/common/footer.html'"></div>
+    </div>
+    <div ng-include="'views/common/right-sidebar.html'"></div>
+</div>
+<!-- End wrapper-->
 <script src="dist/vendor.js"></script>
 <script src="dist/app.js"></script>
 <script src="/socket.io/socket.io.js"></script>
