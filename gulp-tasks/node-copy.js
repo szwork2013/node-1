@@ -11,7 +11,7 @@ module.exports = function(gulp, plugins, npmPackages, config) {
     ).pipe(gulp.dest(config.path.public + '/dist'));
 
     return gulp.src([
-        // nodePath
+        // Bootstrap
         nodePath + '/bootstrap/less/!(variables).less',
         nodePath + '/bootstrap/less/mixins/*.less',
         // Font Awesome
