@@ -26,9 +26,9 @@ var tasksMapper = {
   'browser-sync': ['nodemon'],
   'bs-reload': [],
   'node-copy': [],
-  'bootstrap-variable': ['node-copy'],
-  'bootstrap-compile': ['bootstrap-variable'],
-  'css': ['bootstrap-compile'],
+  'less-variable': ['node-copy'],
+  'less-compile': ['less-variable'],
+  'css': ['less-compile'],
 };
 
 var browserDependencies = [
