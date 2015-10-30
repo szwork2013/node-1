@@ -35,7 +35,6 @@ app.config(require('./config'))
   })
   .run(function($rootScope, $state) {
     $rootScope.$state = $state;
-    $rootScope.rightSidebar = false;
     // Fixture
     $rootScope.user = {
       firstName: 'Tyler',

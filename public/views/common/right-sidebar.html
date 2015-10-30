@@ -1,4 +1,4 @@
-<div id="right-sidebar" ng-show="rightSidebar" class="sidebar-open">
+<div id="right-sidebar" ng-init="righSidebar=false" ng-show="rightSidebar" class="sidebar-open">
     <div class="sidebar-container" full-scroll>
         <ul class="nav nav-tabs navs-3">
             <li ng-class="{active: tab1}"><a ng-click="tab1 = true; tab2 = false; tab3 = false" ng-init="tab1 = true">
