@@ -10,7 +10,7 @@ module.exports = function(io, conf) {
 
     console.log('Client ' + uuid + ' connected');
     socket.emit('server.user.notify', socketMsg('Welcome ' + socket.uuid, 'info'));
-    socket.broadcast.emit('server.user.notify', socketMsg('User ' + socket.uuid + ' connected !', 'info'));
+    socket.broadcast.emit('server.user.notify', socketMsg('User ' + socket.uuid + ' connected !', 'warning'));
 
     socket.on('disconnect', function () {
       console.log('Client ' + uuid + ' deconnected');

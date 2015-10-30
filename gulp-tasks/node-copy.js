@@ -18,6 +18,8 @@ module.exports = function(gulp, plugins, npmPackages, config) {
         nodePath + '/font-awesome/css/font-awesome.css',
         // Animate
         nodePath + '/animate.css/animate.css',
+        // Toastr
+        nodePath + '/toastr/build/toastr.css',
       ], { base: nodePath }
     ).pipe(gulp.dest(config.path.public + '/lib'));
   };
