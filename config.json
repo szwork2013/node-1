@@ -21,6 +21,7 @@
     "public": "./public",
     "server": {
       "controller": "./src/server/controller",
+      "socket": "./src/server/socket",
       "model": "./src/server/model"
     }
   }

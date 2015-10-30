@@ -11,6 +11,7 @@ var fs = require('fs');
 var mongoose = require('mongoose');
 
 var server = http.createServer(app);
+var io = require('socket.io')(server);
 
 // default
 var env = process.env.NODE_ENV || argv.env;
@@ -26,6 +27,8 @@ fs.readdirSync(config.path.server.controller).forEach(function (file) {
     route.controller(app, config);
   }
 });
+
+require(config.path.server.socket)(io, config);
 
 server.listen(port, host);
 server.on('listening', function() {
