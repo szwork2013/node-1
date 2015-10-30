@@ -42,6 +42,7 @@ var browserDependencies = [
   'bootstrap-ui',
   'jquery',
   'jquery-ui',
+  'jquery-slimscroll',
   'metismenu',
   'oclazyload',
   'pace',

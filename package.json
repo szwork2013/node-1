@@ -35,6 +35,7 @@
     "font-awesome": "^4.4.0",
     "ion-rangeslider": "^2.1.2",
     "jquery": "^2.1.4",
+    "jquery-slimscroll": "^1.3.6",
     "jquery-ui": "^1.10.5",
     "metismenu": "^2.2.0",
     "mongoose": "^4.2.2",
