@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "angular": "^1.4.7",
+    "angular-gravatar": "^0.4.1",
     "angular-translate": "^2.8.1",
     "angular-ui-bootstrap": "^0.14.3",
     "angular-ui-router": "^0.2.15",

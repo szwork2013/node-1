@@ -5,6 +5,7 @@ window.$ = window.jQuery = require('jquery');
 
 // External
 require('angular');
+require('angular-gravatar');
 require('angular-ui-router');
 require('angular-translate');
 require('angular-ui-bootstrap');
@@ -18,6 +19,7 @@ require('./modules');
 var app = angular.module('feedme', [
   'ui.router',
   'ui.bootstrap',
+  'ui.gravatar',
   'feedme.controllers',
   'feedme.directives',
   'feedme.socket-io',
@@ -38,6 +40,7 @@ app.config(require('./config'))
     $rootScope.user = {
       firstName: 'Tyler',
       lastName: 'Durden',
+      email: 'gabrielmalet@gmail.com',
       job: 'Founder of Chaos Project',
     }
   })

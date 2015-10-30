@@ -33,6 +33,7 @@ var tasksMapper = {
 
 var browserDependencies = [
   'angular',
+  'angular-gravatar',
   'angular-ui-router',
   'angular-ui-sortable',
   'angular-ui-bootstrap',

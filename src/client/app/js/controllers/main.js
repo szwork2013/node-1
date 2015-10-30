@@ -3,6 +3,7 @@
 var toastr = require('toastr');
 
 module.exports = function($scope, socket) {
+  // Notifications handler
   socket.on('server.user.notify', function (data) {
     switch (data.type) {
       case 'info':
