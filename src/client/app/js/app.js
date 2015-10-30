@@ -13,9 +13,24 @@ require('pace').start();
 // Internal
 require('./controllers');
 require('./directives');
+require('./modules');
 
-var app = angular.module('feedme', ['ui.router', 'ui.bootstrap', 'feedme.controllers', 'feedme.directives', 'pascalprecht.translate']);
+var app = angular.module('feedme', [
+  'ui.router',
+  'ui.bootstrap',
+  'feedme.controllers',
+  'feedme.directives',
+  'feedme.socket-io',
+  'pascalprecht.translate',
+]);
+
 app.config(require('./config'))
+  .factory('socket', function (socketFactory) {
+    return socketFactory({
+      prefix: '',
+      ioSocket: io(),
+    });
+  })
   .run(function($rootScope, $state) {
     $rootScope.$state = $state;
     $rootScope.rightSidebar = false;
