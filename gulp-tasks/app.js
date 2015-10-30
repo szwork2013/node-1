@@ -6,6 +6,11 @@ module.exports = function(gulp, plugins, npmPackages, config) {
 
     npmPackages().forEach(function (id) { b.external(id); });
 
+    npmPackages().forEach(function (id) {
+      var extendId = Object.keys(config.particularities).indexOf(id) == -1 ? id : config.particularities[id];
+      b.external(extendId);
+    });
+
     var stream = b.bundle().pipe(plugins.source(config.env.debug ? 'app.js' : 'app.min.js'));
 
     if (!config.env.debug) {

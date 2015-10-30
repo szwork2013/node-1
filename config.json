@@ -24,5 +24,8 @@
       "socket": "./src/server/socket",
       "model": "./src/server/model"
     }
+  },
+  "particularities": {
+    "jquery-slimscroll": "jquery-slimscroll/jquery.slimscroll"
   }
 }

@@ -5,7 +5,11 @@ module.exports = function(gulp, plugins, npmPackages, config) {
     var b = plugins.browserify({ debug: config.env.debug });
 
     npmPackages().forEach(function (id) {
-      b.require(plugins.nodeResolve.sync(id), { expose: id });
+      if (Object.keys(config.particularities).indexOf(id) == -1) {
+        b.require(plugins.nodeResolve.sync(id), { expose: id });
+      } else {
+        b.require(config.particularities[id]);
+      }
     });
 
     var stream = b.bundle().pipe(plugins.source(config.env.debug ? 'vendor.js' : 'vendor.min.js'));
