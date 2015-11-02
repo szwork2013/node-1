@@ -9,9 +9,9 @@ module.exports = function($timeout) {
       $timeout(function(){
         element.slimscroll({
           height: '234px',
-          railOpacity: 0.4
+          railOpacity: 0.4,
+          start: 'bottom',
         });
-
       });
     }
   };

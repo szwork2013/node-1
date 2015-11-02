@@ -37,6 +37,7 @@ app.config(require('./config'))
     $rootScope.$state = $state;
     // Fixture
     $rootScope.user = {
+      uuid: '',
       firstName: 'Tyler',
       lastName: 'Durden',
       email: 'gabrielmalet@gmail.com',
