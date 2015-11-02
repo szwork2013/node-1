@@ -29,7 +29,7 @@ module.exports = function(io, conf) {
      */
 
     function socketMsg(content, type) {
-      return { date: moment().format('MMMM Do YYYY, h:mm:ss'), type: type, user: socket.uuid, message: content };
+      return { date: moment().format('YYYY-MM-DD HH:mm:SS'), type: type, user: socket.uuid, message: content };
     }
 
     function guid() {
