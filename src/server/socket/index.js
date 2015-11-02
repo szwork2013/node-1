@@ -1,5 +1,7 @@
 'use strict';
 
+var moment = require('moment');
+
 var users = {};
 
 module.exports = function(io, conf) {
@@ -9,6 +11,7 @@ module.exports = function(io, conf) {
     users[uuid] = socket.uuid = uuid;
 
     console.log('Client ' + uuid + ' connected');
+    socket.emit('server.user.information', socketMsg({ uuid: uuid }));
     socket.emit('server.user.notify', socketMsg('Welcome ' + socket.uuid, 'info'));
     socket.broadcast.emit('server.user.notify', socketMsg('User ' + socket.uuid + ' connected !', 'warning'));
     io.sockets.emit('server.users.number', socketMsg(Object.keys(users).length));
@@ -19,12 +22,14 @@ module.exports = function(io, conf) {
       socket.broadcast.emit('server.users.number', socketMsg(Object.keys(users).length));
     });
 
+    require('./chat')(io, socket, socketMsg);
+
     /*
      * Helpers
      */
 
     function socketMsg(content, type) {
-      return { date: (new Date()).toString(), type: type, user: socket.uuid, message: content };
+      return { date: moment().format('MMMM Do YYYY, h:mm:ss'), type: type, user: socket.uuid, message: content };
     }
 
     function guid() {

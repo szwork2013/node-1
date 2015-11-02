@@ -48,6 +48,7 @@ var browserDependencies = [
   'pace',
   'sweetalert',
   'toastr',
+  'moment',
 ];
 
 config.env.current = process.env.NODE_ENV || argv.env;
