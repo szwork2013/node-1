@@ -4,10 +4,8 @@ module.exports = function(gulp, plugins, npmPackages, config) {
   return function() {
     var nodePath = 'node_modules/';
 
-    gulp.src([
-        // Others (no in lib)
-      ], { base: nodePath }
-    ).pipe(gulp.dest(config.path.public + '/dist'));
+    // Font-Awesome
+    gulp.src([nodePath + '/font-awesome/fonts/*.*']).pipe(gulp.dest(config.path.public + '/dist/fonts'));
 
     return gulp.src([
         // Bootstrap
