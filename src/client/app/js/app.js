@@ -9,6 +9,10 @@ require('angular-gravatar');
 require('angular-ui-router');
 require('angular-translate');
 require('angular-ui-bootstrap');
+require('auth0-angular');
+require('angular-storage');
+require('angular-cookies');
+require('angular-jwt');
 require('ng-focus-if');
 require('pace').start();
 
@@ -26,6 +30,9 @@ var app = angular.module('corpnet', [
   'corpnet.socket-io',
   'pascalprecht.translate',
   'focus-if',
+  'auth0',
+  'angular-storage',
+  'angular-jwt'
 ]);
 
 app.config(require('./config'))
@@ -35,7 +42,8 @@ app.config(require('./config'))
       ioSocket: io(),
     });
   })
-  .run(function($rootScope, $state) {
+  .run(function(auth, $rootScope, $state, store, jwtHelper, $location) {
+    auth.hookEvents();
     $rootScope.$state = $state;
     // Fixture
     $rootScope.user = {
@@ -44,6 +52,19 @@ app.config(require('./config'))
       lastName: 'Durden',
       email: 'gabrielmalet@gmail.com',
       job: 'Founder of Chaos Project',
-    }
+    };
+
+    $rootScope.$on('$locationChangeStart', function() {
+      var token = store.get('token');
+      if (token) {
+        if (!jwtHelper.isTokenExpired(token)) {
+          if (!auth.isAuthenticated) {
+            auth.authenticate(store.get('profile'), token);
+          }
+        } else {
+          $location.path('/');
+        }
+      }
+    });
   })
 ;

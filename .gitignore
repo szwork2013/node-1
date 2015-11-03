@@ -1,5 +1,4 @@
 node_modules
-bower_components
+src/client/app/js/auth0/config.json
 public/dist
-public/lib
 .idea

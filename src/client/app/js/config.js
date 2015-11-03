@@ -2,13 +2,15 @@
 
 var env = require('./env');
 
-module.exports = function ($stateProvider, $urlRouterProvider, $translateProvider) {
+module.exports = function (
+  $stateProvider, $urlRouterProvider, $translateProvider, authProvider, jwtInterceptorProvider, $httpProvider
+) {
   $stateProvider
     .state('app', {
       abstract: true,
       url: '/app',
       templateUrl: env.templatePath('common/content.html'),
-      data: { includes: true }
+      data: { includes: true, requiresLogin: true },
     })
     .state('app.home', {
       url: '/home',
@@ -18,7 +20,7 @@ module.exports = function ($stateProvider, $urlRouterProvider, $translateProvide
       abstract: true,
       url: '/account',
       templateUrl: env.templatePath('common/content.html'),
-      data: { includes: true }
+      data: { includes: true , requiresLogin: true },
     })
     .state('account.profile', {
       url: '/profile',
@@ -31,11 +33,19 @@ module.exports = function ($stateProvider, $urlRouterProvider, $translateProvide
     .state('login', {
       url: '/login',
       templateUrl: env.templatePath('login.html'),
-      data: { includes: false }
+      data: { includes: false },
     })
   ;
 
   $urlRouterProvider.otherwise('app/home');
+
+  authProvider.init(require('./auth0/config.json'));
+
+  jwtInterceptorProvider.tokenGetter = ['store', function(store) {
+    return store.get('token');
+  }];
+
+  $httpProvider.interceptors.push('jwtInterceptor');
 
   require('./translations')($translateProvider);
 };
