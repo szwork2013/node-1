@@ -1,4 +1,5 @@
-<div class="middle-box text-center loginscreen  animated fadeInDown" ng-init="ns='login'">
+<div    ng-controller="login.controller" ng-init="ns='login'"
+        class="middle-box text-center loginscreen  animated fadeInDown">
     <div>
         <div>
             <h1 class="logo-name">CN+</h1>
@@ -7,14 +8,16 @@
         <p>{{ (ns+'.description') | translate }}
         </p>
         <p>{{ (ns+'.login') | translate }}</p>
-        <form class="m-t" role="form" action="login.html#">
+        <form class="m-t" role="form" novalidate>
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="{{ (ns+'.username') | translate }}" required="">
+                <input  ng-model="userLogin.username" required
+                        type="text" class="form-control" placeholder="{{ (ns+'.username') | translate }}">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="{{ (ns+'.password') | translate }}" required="">
+                <input  ng-model="userLogin.password" required
+                        type="password" class="form-control" placeholder="{{ (ns+'.password') | translate }}">
             </div>
-            <button type="submit" class="btn btn-primary block full-width m-b">
+            <button type="submit" class="btn btn-primary block full-width m-b" ng-click="login(userLogin)">
                 {{ (ns+'.submit') | translate }}
             </button>
 
