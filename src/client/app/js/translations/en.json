@@ -28,5 +28,15 @@
     },
     "chat": {},
     "footer": {}
+  },
+  "login": {
+    "welcome": "Welcome to CorpNet",
+    "description": "CORPoration social NETwork.",
+    "login": "Login in to unleash the power !",
+    "submit": "Login",
+    "username": "Username",
+    "password": "Password",
+    "question": "Do no have an account?",
+    "register": "Create an account"
   }
 }

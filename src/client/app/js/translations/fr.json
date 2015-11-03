@@ -28,5 +28,15 @@
     },
     "chat": {},
     "footer": {}
+  },
+  "login": {
+    "welcome": "Bienvenue à CorpNet",
+    "description": "Le réseau sociel d'entreprise.",
+    "login": "Connectez-vous pour profiter !",
+    "submit": "Se connecter",
+    "username": "Pseudonyme",
+    "password": "Mot de passe",
+    "question": "Pas de compte ?",
+    "register": "Créer un compte"
   }
 }
