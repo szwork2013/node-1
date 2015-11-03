@@ -1,43 +1,45 @@
-<div class="small-chat-box ng-small-chat fadeInRight animated"
-     ng-show="openChat" ng-controller="chat.controller" ng-cloak>
-    <div class="heading">
-        <small class="chat-date pull-right">
-            {{ userNumber }} {{ 'chat.users-online' | translate }}
-        </small>
-        {{ 'chat.title' | translate }}
-    </div>
-    <div class="content" chat-slim-scroll>
-        <div ng-repeat="msgData in messages">
-            <div ng-class="$root.user.uuid == msgData.user ? 'right' : 'left'">
-                <div class="author-name">
-                    {{ msgData.user }} <small class="chat-date">
-                    {{ msgData.date }}
-                </small>
-                </div>
-                <div class="chat-message" ng-class="{ 'active': $root.user.uuid == msgData.user }">
-                    {{ msgData.message }}
+<div ng-controller="chat.controller" ng-cloak>
+    <div class="small-chat-box ng-small-chat fadeInRight animated"
+         ng-show="isChatOpen" >
+        <div class="heading">
+            <small class="chat-date pull-right">
+                {{ userNumber }} {{ 'chat.users-online' | translate }}
+            </small>
+            {{ 'chat.title' | translate }}
+        </div>
+        <div class="content" chat-slim-scroll>
+            <div ng-repeat="msgData in messages">
+                <div ng-class="$root.user.uuid == msgData.user ? 'right' : 'left'">
+                    <div class="author-name">
+                        {{ msgData.user }} <small class="chat-date">
+                        {{ msgData.date }}
+                    </small>
+                    </div>
+                    <div class="chat-message" ng-class="{ 'active': $root.user.uuid == msgData.user }">
+                        {{ msgData.message }}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="form-chat">
-        <div class="input-group input-group-sm">
-            <input type="text" class="form-control"
-                   focus-if="openChat"
-                   ng-model="message"
-                   ng-keypress="$event.keyCode == 13 && sendMessage(message)">
+        <div class="form-chat">
+            <div class="input-group input-group-sm">
+                <input type="text" class="form-control"
+                       focus-if="isChatOpen"
+                       ng-model="message"
+                       ng-keypress="$event.keyCode == 13 && sendMessage(message)">
             <span class="input-group-btn">
             <button class="btn btn-primary" type="button" ng-click="sendMessage(message)">
                 Send
             </button>
         </span></div>
+        </div>
+
     </div>
+    <div id="small-chat" ng-click="openChat()">
 
-</div>
-<div id="small-chat" ng-click="openChat = !openChat">
-
-    <span class="badge badge-warning pull-right">5</span>
-    <a class="open-small-chat">
-        <i class="fa fa-comments"></i>
-    </a>
+        <span ng-if="msgBadge > 0" class="badge badge-danger pull-right">{{ msgBadge }}</span>
+        <a class="open-small-chat">
+            <i class="fa fa-comments"></i>
+        </a>
+    </div>
 </div>
