@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html ng-init="include = $state.current.data.includes">
 
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FeedMe</title>
+    <title>CorpNet</title>
 
     <link href="dist/app.css" rel="stylesheet">
 </head>
 
 
-<body ng-controller="main.controller" class="pace-done" id="page-top">
+<body class="pace-done" ng-class="!include && 'gray-bg'" id="page-top">
 <div id="wrapper">
-    <div ng-include="'views/common/left-sidebar.html'"></div>
-    <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
-        <div ng-include="'views/common/header.html'"></div>
+    <div ng-if="include" ng-include="'views/common/left-sidebar.html'"></div>
+    <div ng-attr-id="{{include && 'page-wrapper'}}" ng-class="include && 'gray-bg'">
+        <div ng-if="include" ng-include="'views/common/header.html'"></div>
 
         <div ui-view></div>
 
-        <div ng-include="'views/common/chat.html'"></div>
-        <div ng-include="'views/common/footer.html'"></div>
+        <div ng-if="include" ng-include="'views/common/chat.html'"></div>
+        <div ng-if="include" ng-include="'views/common/footer.html'"></div>
     </div>
-    <div ng-include="'views/common/right-sidebar.html'"></div>
+    <div ng-if="include" ng-include="'views/common/right-sidebar.html'"></div>
 </div>
 <!-- End wrapper-->
 <script src="dist/vendor.js"></script>
@@ -35,7 +35,7 @@
 
     try {
         angular.element(document).ready(function() {
-            angular.bootstrap(document, ['feedme']);
+            angular.bootstrap(document, ['corpnet']);
         });
     } catch (e) {
         console.error(e.message);

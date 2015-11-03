@@ -17,13 +17,13 @@ require('./controllers');
 require('./directives');
 require('./modules');
 
-var app = angular.module('feedme', [
+var app = angular.module('corpnet', [
   'ui.router',
   'ui.bootstrap',
   'ui.gravatar',
-  'feedme.controllers',
-  'feedme.directives',
-  'feedme.socket-io',
+  'corpnet.controllers',
+  'corpnet.directives',
+  'corpnet.socket-io',
   'pascalprecht.translate',
   'focus-if',
 ]);

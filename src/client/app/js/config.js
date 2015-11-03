@@ -8,6 +8,7 @@ module.exports = function ($stateProvider, $urlRouterProvider, $translateProvide
       abstract: true,
       url: '/app',
       templateUrl: env.templatePath('common/content.html'),
+      data: { includes: true }
     })
     .state('app.home', {
       url: '/home',
@@ -17,6 +18,7 @@ module.exports = function ($stateProvider, $urlRouterProvider, $translateProvide
       abstract: true,
       url: '/account',
       templateUrl: env.templatePath('common/content.html'),
+      data: { includes: true }
     })
     .state('account.profile', {
       url: '/profile',
@@ -25,6 +27,11 @@ module.exports = function ($stateProvider, $urlRouterProvider, $translateProvide
     .state('account.contact', {
       url: '/contact',
       templateUrl: env.templatePath('contact.html'),
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: env.templatePath('login.html'),
+      data: { includes: false }
     })
   ;
 

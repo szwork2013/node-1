@@ -1,6 +1,6 @@
 'use strict';
 
-require('angular').module('feedme.socket-io', []).
+require('angular').module('corpnet.socket-io', []).
   provider('socketFactory', function () {
     'use strict';
 

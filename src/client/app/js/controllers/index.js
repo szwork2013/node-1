@@ -1,6 +1,6 @@
 'use strict';
 
-var app = require('angular').module('feedme.controllers', ['feedme.socket-io']);
+var app = require('angular').module('corpnet.controllers', ['corpnet.socket-io']);
 
 app.controller('main.controller', require('./main'));
 app.controller('home.controller', require('./home'));
