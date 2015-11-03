@@ -35,8 +35,11 @@
     "login": "Connectez-vous pour profiter !",
     "submit": "Se connecter",
     "username": "Pseudonyme",
+    "usernameError": "Vous devez renseigner votre pseudonyme.",
     "password": "Mot de passe",
+    "passwordError": "Vous devez renseigner votre mot de passe",
     "question": "Pas de compte ?",
-    "register": "Créer un compte"
+    "register": "Créer un compte",
+    "error": "Vous avez des erreurs dans votre formulaire !"
   }
 }
