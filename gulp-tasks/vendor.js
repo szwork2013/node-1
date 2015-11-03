@@ -12,7 +12,7 @@ module.exports = function(gulp, plugins, npmPackages, config) {
       }
     });
 
-    var stream = b.bundle().pipe(plugins.source(config.env.debug ? 'vendor.js' : 'vendor.min.js'));
+    var stream = b.bundle().pipe(plugins.source('vendor.min.js'));
 
     if (!config.env.debug) {
       stream.pipe(plugins.streamify(plugins.uglify()));

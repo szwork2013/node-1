@@ -11,7 +11,7 @@ module.exports = function(gulp, plugins, npmPackages, config) {
       b.external(extendId);
     });
 
-    var stream = b.bundle().pipe(plugins.source(config.env.debug ? 'app.js' : 'app.min.js'));
+    var stream = b.bundle().pipe(plugins.source('app.min.js'));
 
     if (!config.env.debug) {
       stream.pipe(plugins.streamify(plugins.uglify()));
