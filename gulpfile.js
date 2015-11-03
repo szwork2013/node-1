@@ -49,6 +49,7 @@ var browserDependencies = [
   'sweetalert',
   'toastr',
   'moment',
+  'ng-focus-if',
 ];
 
 config.env.current = process.env.NODE_ENV || argv.env;

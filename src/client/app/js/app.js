@@ -9,6 +9,7 @@ require('angular-gravatar');
 require('angular-ui-router');
 require('angular-translate');
 require('angular-ui-bootstrap');
+require('ng-focus-if');
 require('pace').start();
 
 // Internal
@@ -24,6 +25,7 @@ var app = angular.module('feedme', [
   'feedme.directives',
   'feedme.socket-io',
   'pascalprecht.translate',
+  'focus-if',
 ]);
 
 app.config(require('./config'))

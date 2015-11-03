@@ -22,8 +22,11 @@
     </div>
     <div class="form-chat">
         <div class="input-group input-group-sm">
-            <input type="text" class="form-control" ng-model="message"
-                   ng-keypress="$event.keyCode == 13 && sendMessage(message)"> <span class="input-group-btn">
+            <input type="text" class="form-control"
+                   focus-if="openChat"
+                   ng-model="message"
+                   ng-keypress="$event.keyCode == 13 && sendMessage(message)">
+            <span class="input-group-btn">
             <button class="btn btn-primary" type="button" ng-click="sendMessage(message)">
                 Send
             </button>
