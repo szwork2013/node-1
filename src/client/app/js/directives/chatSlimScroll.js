@@ -5,14 +5,24 @@ require('jquery-slimscroll/jquery.slimscroll');
 module.exports = function($timeout) {
   return {
     restrict: 'A',
+    scope: {
+      boxHeight: '@'
+    },
     link: function(scope, element) {
-      $timeout(function(){
-        element.slimscroll({
-          height: '234px',
-          railOpacity: 0.4,
-          start: 'bottom',
-        });
-      });
+      function scrolling() {
+        $timeout(function(){
+          element.slimscroll({
+            height: scope.boxHeight,
+            railOpacity: 0.9,
+            start: 'bottom',
+            scrollTo: ($(element[0]).find('div').length * 67)+'px',
+          });
+        })
+      }
+
+      scrolling();
+
+      scope.$on('chat.scroll.bottom', function(event, data) { scrolling(); });
     }
   };
 };
