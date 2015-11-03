@@ -47,11 +47,5 @@
     "sweetalert": "^1.1.3",
     "toastr": "^2.1.2",
     "yargs": "^3.27.0"
-  },
-  "browser": {
-    "angular": "./bower_components/angular/angular.js",
-    "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js",
-    "jquery": "./bower_components/dist/jquery.js",
-    "bootsrap": "./bower_components/bootstrap/dist/js/bootstrap.js"
   }
 }
