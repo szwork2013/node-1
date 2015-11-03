@@ -11,7 +11,7 @@ module.exports = function($rootScope, $scope, socket) {
 
   socket.on('client.chat.push.message', function(data) {
     $scope.messages.push(data);
-    $rootScope.$broadcast('chat.scroll.bottom', {});
+    scroll();
     if (!$scope.isChatOpen) {
       $scope.msgBadge++;
     }
@@ -27,5 +27,10 @@ module.exports = function($rootScope, $scope, socket) {
   $scope.openChat = function() {
     $scope.isChatOpen = !$scope.isChatOpen;
     $scope.msgBadge = 0;
+    scroll();
   };
+
+  var scroll = function() {
+    $rootScope.$broadcast('chat.scroll.bottom', {});
+  }
 };
