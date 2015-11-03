@@ -9,8 +9,8 @@ module.exports = function ($scope, $http, auth, store, $location) {
       store.set('profile', profile);
       store.set('token', token);
       $location.path('/');
-    }, function () {
-      // Error callback
+    }, function(error) {
+      console.log("There was an error logging in", error);
     });
   }
 };
