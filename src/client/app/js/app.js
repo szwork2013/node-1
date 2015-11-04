@@ -61,6 +61,9 @@ app.config(require('./config'))
           if (!auth.isAuthenticated) {
             auth.authenticate(store.get('profile'), token);
           }
+          if ($location.path() == '/login') {
+            $location.path('/');
+          }
         } else {
           $location.path('/');
         }
