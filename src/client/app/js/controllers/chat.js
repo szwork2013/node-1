@@ -6,7 +6,7 @@ module.exports = ['$rootScope', '$scope', 'socket',
     $scope.isChatOpen = false;
     $scope.msgBadge = 0;
 
-    socket.on('server.users.number', function(data) {
+    socket.on('client.users.number', function(data) {
       $scope.userNumber = data.message;
     });
 

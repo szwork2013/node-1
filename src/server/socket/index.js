@@ -3,23 +3,34 @@
 var moment = require('moment');
 
 var users = {};
+var guests = {};
 
 module.exports = function(io, conf) {
   io.on('connection', function(socket) {
 
     var uuid = guid();
-    users[uuid] = socket.uuid = uuid;
+    guests[uuid] = socket.uuid = uuid;
+    console.log('Guest ' + socket.uuid + ' connected !');
 
-    console.log('Client ' + uuid + ' connected');
-    socket.emit('server.user.information', socketMsg({ uuid: uuid }));
-    socket.emit('server.user.notify', socketMsg('Welcome ' + socket.uuid, 'info'));
-    socket.broadcast.emit('server.user.notify', socketMsg('User ' + socket.uuid + ' connected !', 'warning'));
-    io.sockets.emit('server.users.number', socketMsg(Object.keys(users).length));
+    socket.on('server.user.connected', function(data) {
+      users[data.user_id] = socket.auth = data;
+      console.log('User ' + socket.auth.user_id + ' (' + socket.auth.nickname + ') connected !');
+      // todo: bind database to get more information about clients
+      socket.emit('client.user.information', socketMsg({ uuid: socket.uuid }));
+      socket.emit('client.user.notify', socketMsg('Welcome ' + socket.auth.nickname, 'info'));
+      socket.broadcast.emit('client.user.notify', socketMsg('User ' + socket.auth.nickname + ' connected !', 'warning'));
+      io.sockets.emit('client.users.number', socketMsg(Object.keys(users).length));
+    });
+
+    socket.on('server.user.disconnected', function() {
+      console.log('User ' + socket.auth.user_id + ' (' + socket.auth.nickname + ') disconnected !');
+      delete users[socket.user_id];
+      socket.broadcast.emit('client.users.number', socketMsg(Object.keys(users).length));
+    });
 
     socket.on('disconnect', function () {
-      console.log('Client ' + uuid + ' deconnected');
-      delete users[socket.uuid];
-      socket.broadcast.emit('server.users.number', socketMsg(Object.keys(users).length));
+      console.log('Guest ' + socket.uuid + ' disconnected !');
+      delete guests[socket.uuid];
     });
 
     require('./chat')(io, socket, socketMsg);
@@ -29,7 +40,18 @@ module.exports = function(io, conf) {
      */
 
     function socketMsg(content, type) {
-      return { date: moment().format('YYYY-MM-DD HH:mm:SS'), type: type, user: socket.uuid, message: content };
+      var ret = {
+        date: moment().format('YYYY-MM-DD HH:mm:SS'),
+        type: type,
+        guest: socket.uuid,
+        message: content
+      };
+
+      if (socket.auth) {
+        ret.user = {id: socket.auth.user_id, nickname: socket.auth.nickname };
+      }
+
+      return ret;
     }
 
     function guid() {

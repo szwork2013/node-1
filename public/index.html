@@ -12,7 +12,8 @@
 </head>
 
 
-<body class="pace-done" ng-class="!$state.current.data.includes && 'gray-bg'" id="page-top">
+<body ng-controller="main.controller" ng-class="!$state.current.data.includes && 'gray-bg'"
+      class="pace-done"  id="page-top">
 <div id="wrapper">
     <div ng-if="$state.current.data.includes" ng-include="'views/common/left-sidebar.html'"></div>
     <div ng-attr-id="{{$state.current.data.includes && 'page-wrapper'}}" ng-class="$state.current.data.includes && 'gray-bg'">

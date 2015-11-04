@@ -42,24 +42,21 @@ app.config(require('./config'))
       ioSocket: io(),
     });
   })
-  .run(function(auth, $rootScope, $state, store, jwtHelper, $location) {
+  .run(function(auth, $rootScope, $state, store, jwtHelper, $location, socket) {
     auth.hookEvents();
     $rootScope.$state = $state;
-    // Fixture
-    $rootScope.user = {
-      uuid: '',
-      firstName: 'Tyler',
-      lastName: 'Durden',
-      email: 'gabrielmalet@gmail.com',
-      job: 'Founder of Chaos Project',
-    };
+    $rootScope.user = { 'job': 'Chaos Project'};
 
     $rootScope.$on('$locationChangeStart', function() {
       var token = store.get('token');
       if (token) {
         if (!jwtHelper.isTokenExpired(token)) {
+          var profile = store.get('profile');
+          $rootScope.user = Object.assign($rootScope.user, profile);
+          console.log($rootScope.user);
           if (!auth.isAuthenticated) {
-            auth.authenticate(store.get('profile'), token);
+            auth.authenticate(profile, token);
+            socket.emit('server.user.connected', profile);
           }
           if ($location.path() == '/login') {
             $location.path('/');
