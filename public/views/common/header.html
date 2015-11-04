@@ -13,8 +13,8 @@
             <li class="dropdown" uib-dropdown ng-include="'views/common/partials/languages.html'"></li>
             <li class="dropdown" uib-dropdown ng-include="'views/common/partials/messages.html'"></li>
             <li class="dropdown" uib-dropdown ng-include="'views/common/partials/alerts.html'"></li>
-            <li>
-                <a ui-sref="login">
+            <li ng-controller="login.controller">
+                <a ui-sref="login" ng-click="logout()">
                     <i class="fa fa-sign-out"></i> Log out
                 </a>
             </li>
@@ -24,6 +24,5 @@
                 </a>
             </li>
         </ul>
-
     </nav>
 </div>

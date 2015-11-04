@@ -2,19 +2,21 @@
 
 require('jquery-slimscroll/jquery.slimscroll');
 
-module.exports = function($timeout) {
-  return {
-    restrict: 'A',
-    scope: {
-      boxHeight: '@'
-    },
-    link: function(scope, element) {
-      $timeout(function(){
-        element.slimscroll({
-          height: scope.boxHeight,
-          railOpacity: 0.9
+module.exports = ['$timeout',
+  function($timeout) {
+    return {
+      restrict: 'A',
+      scope: {
+        boxHeight: '@'
+      },
+      link: function(scope, element) {
+        $timeout(function(){
+          element.slimscroll({
+            height: scope.boxHeight,
+            railOpacity: 0.9
+          });
         });
-      });
-    }
-  };
-};
+      }
+    };
+  }
+];

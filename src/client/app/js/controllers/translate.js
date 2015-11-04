@@ -1,7 +1,9 @@
 'use strict';
 
-module.exports = function($scope, $translate) {
-  $scope.changeLanguage = function (langKey) {
-    $translate.use(langKey);
-  };
-};
+module.exports = ['$scope', '$translate',
+  function($scope, $translate) {
+    $scope.changeLanguage = function (langKey) {
+      $translate.use(langKey);
+    };
+  }
+];

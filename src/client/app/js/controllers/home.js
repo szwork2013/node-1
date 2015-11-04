@@ -1,5 +1,7 @@
 'use strict';
 
-module.exports = function($scope, socket) {
-  // todo
-};
+module.exports = ['$scope', 'socket',
+  function($scope, socket) {
+    // todo
+  }
+];
