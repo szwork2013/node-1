@@ -26,7 +26,11 @@
     "right-sidebar": {
 
     },
-    "chat": {},
+    "chat": {
+      "usersOnline": "utilisateur en ligne.",
+      "title": "Chat Room",
+      "submit": "Envoyer"
+    },
     "footer": {}
   },
   "login": {

@@ -1,11 +1,11 @@
-<div ng-controller="chat.controller" ng-cloak>
+<div ng-controller="chat.controller" ng-cloak ng-init="ns='base.chat'">
     <div class="small-chat-box ng-small-chat fadeInRight animated"
          ng-show="isChatOpen" >
         <div class="heading">
             <small class="chat-date pull-right">
-                {{ userNumber }} {{ 'chat.users-online' | translate }}
+                {{ userNumber }} {{ (ns+'.usersOnline') | translate }}
             </small>
-            {{ 'chat.title' | translate }}
+            {{ (ns+'.title') | translate }}
         </div>
         <div class="content" chat-slim-scroll>
             <div ng-repeat="msgData in messages">
@@ -29,7 +29,7 @@
                        ng-keypress="$event.keyCode == 13 && sendMessage(message)">
             <span class="input-group-btn">
             <button class="btn btn-primary" type="button" ng-click="sendMessage(message)">
-                Send
+                {{ (ns+'.submit') | translate }}
             </button>
         </span></div>
         </div>
