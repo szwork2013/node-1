@@ -14,7 +14,7 @@ module.exports = function(gulp, plugins, npmPackages, config) {
     var stream = b.bundle().pipe(plugins.source('app.min.js'));
 
     if (!config.env.debug) {
-      stream.pipe(plugins.streamify(plugins.uglify()));
+      stream.pipe(plugins.streamify(plugins.uglify({ mangle: false })));
     }
 
     return stream.pipe(gulp.dest(config.path.public + '/dist'));

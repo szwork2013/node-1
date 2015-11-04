@@ -3,11 +3,10 @@
 module.exports = function(gulp, plugins, npmPackages, config) {
   return function() {
     var stream = gulp.src([config.path.public + '/lib/**/*.css', 'src/client/app/css/**/*.css'])
-      .pipe(plugins.concatCss(config.env.debug ? 'app.css' : 'app.min.css', { rebaseUrls: false }));
+      .pipe(plugins.concatCss('app.min.css', { rebaseUrls: false }));
 
     if (!config.env.debug) {
-      stream
-        .pipe(plugins.minifyCss());
+      stream.pipe(plugins.minifyCss());
     }
 
     return stream.pipe(gulp.dest(config.path.public + '/dist'));
