@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-init="include = $state.current.data.includes">
+<html>
 
 <head>
 
@@ -12,18 +12,18 @@
 </head>
 
 
-<body class="pace-done" ng-class="!include && 'gray-bg'" id="page-top">
+<body class="pace-done" ng-class="!$state.current.data.includes && 'gray-bg'" id="page-top">
 <div id="wrapper">
-    <div ng-if="include" ng-include="'views/common/left-sidebar.html'"></div>
-    <div ng-attr-id="{{include && 'page-wrapper'}}" ng-class="include && 'gray-bg'">
-        <div ng-if="include" ng-include="'views/common/header.html'"></div>
+    <div ng-if="$state.current.data.includes" ng-include="'views/common/left-sidebar.html'"></div>
+    <div ng-attr-id="{{$state.current.data.includes && 'page-wrapper'}}" ng-class="$state.current.data.includes && 'gray-bg'">
+        <div ng-if="$state.current.data.includes" ng-include="'views/common/header.html'"></div>
 
         <div ui-view></div>
 
-        <div ng-if="include" ng-include="'views/common/chat.html'"></div>
-        <div ng-if="include" ng-include="'views/common/footer.html'"></div>
+        <div ng-if="$state.current.data.includes" ng-include="'views/common/chat.html'"></div>
+        <div ng-if="$state.current.data.includes" ng-include="'views/common/footer.html'"></div>
     </div>
-    <div ng-if="include" ng-include="'views/common/right-sidebar.html'"></div>
+    <div ng-if="$state.current.data.includes" ng-include="'views/common/right-sidebar.html'"></div>
 </div>
 <!-- End wrapper-->
 <script src="dist/vendor.min.js"></script>
