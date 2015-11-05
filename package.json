@@ -43,7 +43,7 @@
     "jquery-ui": "^1.10.5",
     "metismenu": "^2.2.0",
     "moment": "^2.10.6",
-    "mongoose": "^4.2.2",
+    "mongoose": "^4.2.4",
     "ng-focus-if": "^1.0.2",
     "oclazyload": "^1.0.6",
     "pace": "HubSpot/pace",
