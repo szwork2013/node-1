@@ -2,11 +2,20 @@
 
 var toastr = require('toastr');
 
-module.exports = ['$scope', '$rootScope', 'socket',
-  function($scope, $rootScope, socket) {
+module.exports = ['$scope', '$http', '$rootScope', 'socket',
+  function($scope, $http, $rootScope, socket) {
 
     socket.on('client.user.information', function(data) {
       $rootScope.user.uuid = data.guest;
+      $http({
+        method: 'POST',
+        url: '/user',
+        data: {user: $rootScope.user }
+      }).then(function() {
+        console.log("success");
+      }, function() {
+        console.log("fail");
+      });
     });
 
     socket.on('client.user.notify', function (data) {
