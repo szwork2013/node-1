@@ -12,7 +12,7 @@ module.exports.controller = function(app, config) {
         if (err) {
           helper.sendJSON(res, 404, {}, err);
         } else {
-          console.info(result);
+          helper.sendJSON(res, 200, { message: result });
         }
       });
     } else {

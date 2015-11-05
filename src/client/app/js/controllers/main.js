@@ -11,10 +11,10 @@ module.exports = ['$scope', '$http', '$rootScope', 'socket',
         method: 'POST',
         url: '/user',
         data: {user: $rootScope.user }
-      }).then(function() {
-        console.log("success");
+      }).then(function(res) {
+        $rootScope.user = Object.assign($rootScope.user, res.data.message);
       }, function() {
-        console.log("fail");
+        toastr.error(data.error);
       });
     });
 
