@@ -16,13 +16,16 @@
       "port": 3000
     }
   },
+  "mongo": {
+    "uri": "mongodb://localhost:27017/corpnet"
+  },
   "main": "app.js",
   "path": {
     "public": "./public",
     "server": {
-      "controller": "./src/server/controller",
-      "socket": "./src/server/socket",
-      "model": "./src/server/model"
+      "controller": "./src/server/controllers",
+      "socket": "./src/server/sockets",
+      "model": "./src/server/models"
     }
   },
   "particularities": {
