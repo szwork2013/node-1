@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('../models/user');
+var helper = require('./helpers/httpRes');
 
 module.exports.controller = function(app, config) {
   app.post('/user', function (req, res) {
@@ -9,11 +10,13 @@ module.exports.controller = function(app, config) {
     if (user) {
       User.findOrCreate(user, function(err, result) {
         if (err) {
-          console.error("Error");
+          helper.sendJSON(res, 404, {}, err);
         } else {
           console.info(result);
         }
       });
+    } else {
+      helper.sendJSON(res, 404, {});
     }
   });
 };
