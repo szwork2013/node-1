@@ -1,5 +1,7 @@
 'use strict';
 
+var User = require('../models/user');
+
 var users = {};
 var guests = {};
 
@@ -8,19 +10,28 @@ module.exports = function(io, socket, socketMsg) {
   guests[uuid] = socket.uuid = uuid;
   console.log('Guest ' + socket.uuid + ' connected !');
 
-  socket.on('server.user.connected', function(data) {
-    users[data.user_id] = socket.auth = data;
-    console.log('User ' + socket.auth.user_id + ' (' + socket.auth.nickname + ') connected !');
-    // todo: bind database to get more information about clients
-    socket.emit('client.user.information', socketMsg({ uuid: socket.uuid }));
-    socket.emit('client.user.notify', socketMsg('Welcome ' + socket.auth.nickname, 'info'));
-    socket.broadcast.emit('client.user.notify', socketMsg('User ' + socket.auth.nickname + ' connected !', 'warning'));
-    io.sockets.emit('client.users.number', socketMsg(Object.keys(users).length));
+  socket.on('server.user.connected', function(profile) {
+    if (profile) {
+      User.findOrCreate(profile, function(err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          users[result._id] = socket.user = result;
+          console.log('User ' + socket.user._id + ' (' + socket.user.name.userName + ') connected !');
+          socket.emit('client.user.information', socketMsg(result));
+          socket.emit('client.user.notify', socketMsg('Welcome ' + socket.user.name.userName, 'info'));
+          socket.broadcast.emit('client.user.notify', socketMsg('User ' + socket.user.name.userName + ' connected !', 'warning'));
+          io.sockets.emit('client.users.number', socketMsg(Object.keys(users).length));
+        }
+      });
+    } else {
+      console.log('Profile given error !');
+    }
   });
 
   socket.on('server.user.disconnected', function() {
-    console.log('User ' + socket.auth.user_id + ' (' + socket.auth.nickname + ') disconnected !');
-    delete users[socket.user_id];
+    console.log('User ' + socket.user.id + ' (' + socket.user.name.userName + ') disconnected !');
+    delete users[socket.user._id];
     socket.broadcast.emit('client.users.number', socketMsg(Object.keys(users).length));
   });
 
@@ -30,7 +41,7 @@ module.exports = function(io, socket, socketMsg) {
   });
 
   /*
-   * Heleprs
+   * Helpers
    */
 
   function guid() {

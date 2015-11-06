@@ -5,21 +5,31 @@ var mongoose = require('mongoose');
 module.exports = (function() {
   var schema = new mongoose.Schema({
     id: String,
-    user_id: String,
-    userName: String,
+    identity: {
+      user_id: String,
+    },
     name: {
+      userName: String,
       firstName: String,
       lastName: String
     },
-    job: String,
+    info: {
+      job: String,
+      email: String,
+      description: String,
+    },
   });
 
   schema.statics.findOrCreate = function (profile, cb) {
     var model = this;
 
-    model.find({user_id: profile.user_id}).exec(function (err, results) {
+    model.find({"identity.user_id": profile.user_id}).exec(function (err, results) {
       if (results.length === 0) {
-        model.create(profile, cb);
+        model.create({
+          "identity.user_id": profile.user_id,
+          "name.userName": profile.nickname,
+          "info.email": profile.email,
+        }, cb);
       } else {
         cb(err, results[0]);
       }
