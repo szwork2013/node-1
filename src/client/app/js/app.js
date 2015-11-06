@@ -45,15 +45,13 @@ app.config(require('./config'))
   .run(function(auth, $rootScope, $state, store, jwtHelper, $location, socket) {
     auth.hookEvents();
     $rootScope.$state = $state;
-    $rootScope.user = { 'job': 'Chaos Project'};
+    $rootScope.user = {};
 
     $rootScope.$on('$locationChangeStart', function() {
       var token = store.get('token');
       if (token) {
         if (!jwtHelper.isTokenExpired(token)) {
           var profile = store.get('profile');
-          $rootScope.user = Object.assign($rootScope.user, profile);
-          console.log($rootScope.user);
           if (!auth.isAuthenticated) {
             auth.authenticate(profile, token);
             socket.emit('server.user.connected', profile);
@@ -62,6 +60,7 @@ app.config(require('./config'))
             $location.path('/');
           }
         } else {
+          store.remove('token');
           $location.path('/');
         }
       }

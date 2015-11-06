@@ -6,16 +6,7 @@ module.exports = ['$scope', '$http', '$rootScope', 'socket',
   function($scope, $http, $rootScope, socket) {
 
     socket.on('client.user.information', function(data) {
-      $rootScope.user.uuid = data.guest;
-      $http({
-        method: 'POST',
-        url: '/user',
-        data: {user: $rootScope.user }
-      }).then(function(res) {
-        $rootScope.user = Object.assign($rootScope.user, res.data.message);
-      }, function() {
-        toastr.error(data.error);
-      });
+      $rootScope.user = data.message;
     });
 
     socket.on('client.user.notify', function (data) {
