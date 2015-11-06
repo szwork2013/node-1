@@ -28,8 +28,8 @@ module.exports = function(io, conf) {
         message: content
       };
 
-      if (socket.auth) {
-        ret.user = {id: socket.auth.user_id, nickname: socket.auth.nickname };
+      if (socket.user) {
+        ret.user = socket.user
       }
 
       return ret;
