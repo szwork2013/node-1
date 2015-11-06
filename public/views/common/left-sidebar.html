@@ -4,13 +4,13 @@
             <li class="nav-header">
 
                 <div class="dropdown profile-element" uib-dropdown>
-                    <img gravatar-src="'{{ user.email }}'" gravatar-size="50" class="img-circle">
+                    <img gravatar-src="'{{ user.info.email }}'" gravatar-size="50" class="img-circle">
                     <a class="dropdown-toggle" uib-dropdown-toggle>
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">{{ user.nickname }}</strong>
+                                    <strong class="font-bold">{{ user.name.userName }}</strong>
                              </span>
-                                <span class="text-muted text-xs block">{{ user.job }} <b class="caret"></b></span>
+                                <span class="text-muted text-xs block">{{ user.info.job }} <b class="caret"></b></span>
                             </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">

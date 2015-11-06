@@ -9,13 +9,13 @@
         </div>
         <div class="content" chat-slim-scroll>
             <div ng-repeat="msgData in messages">
-                <div ng-class="$root.user.user_id == msgData.user.id ? 'right' : 'left'">
+                <div ng-class="$root.user._id == msgData.user._id ? 'right' : 'left'">
                     <div class="author-name">
-                        {{ msgData.user.nickname }} <small class="chat-date">
+                        {{ msgData.user.name.userName }} <small class="chat-date">
                         {{ msgData.date }}
                     </small>
                     </div>
-                    <div class="chat-message" ng-class="{ 'active': $root.user.user_id == msgData.user.id }">
+                    <div class="chat-message" ng-class="{ 'active': $root.user._id == msgData.user._id }">
                         {{ msgData.message }}
                     </div>
                 </div>
