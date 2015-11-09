@@ -26,6 +26,10 @@ module.exports = function (
       url: '/profile',
       templateUrl: env.templatePath('profile.html'),
     })
+    .state('account.manage', {
+      url: '/manage',
+      templateUrl: env.templatePath('manage.html'),
+    })
     .state('account.contact', {
       url: '/contact',
       templateUrl: env.templatePath('contact.html'),
