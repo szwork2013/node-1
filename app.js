@@ -34,14 +34,15 @@ fs.readdirSync(config.path.server.model).forEach(function (file) {
   }
 });
 
+require(config.path.server.socket)(io, config);
+
 // Add routes from controller file
 fs.readdirSync(config.path.server.controller).forEach(function (file) {
   if(file.substr(-3) == '.js') {
-    require(config.path.server.controller + '/' + file).controller(app, config);
+    require(config.path.server.controller + '/' + file).controller(app, io, config);
   }
 });
 
-require(config.path.server.socket)(io, config);
 
 server.listen(port, host);
 server.on('listening', function() {
