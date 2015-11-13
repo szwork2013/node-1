@@ -19,7 +19,8 @@ plugins.concatCss = require('gulp-concat-css');
 plugins.minifyCss = require('gulp-minify-css');
 
 var tasksMapper = {
-  'clean': [],
+  'pre-clean': [],
+  'post-clean': [],
   'vendor': [],
   'app': [],
   'nodemon': [],
@@ -66,7 +67,7 @@ Object.keys(tasksMapper).forEach(function(task) {
 
 // Build tasks
 gulp.task('javascript', ['vendor', 'app']);
-gulp.task('install', ['javascript', 'css'], getTask('clean'));
+gulp.task('install', ['javascript', 'css'], getTask('post-clean'));
 gulp.task('default', ['browser-sync'], getTask('watch'));
 
 function getTask(task) {
