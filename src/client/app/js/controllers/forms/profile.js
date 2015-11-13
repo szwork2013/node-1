@@ -2,8 +2,8 @@
 
 module.exports = ['$rootScope', '$scope',
   function($rootScope, $scope) {
-    $scope.update = function() {
-      console.log('update');
+    $scope.update = function(profile) {
+      console.log(profile);
     }
   }
 ];
