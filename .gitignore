@@ -1,4 +1,5 @@
 node_modules
 src/client/app/js/auth0/config.json
 public/dist
+public/lib
 .idea
