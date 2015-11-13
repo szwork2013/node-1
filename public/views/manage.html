@@ -9,7 +9,7 @@
                             <label>{{ (ns+'.manage.username.label') | translate }}</label>
                             <input type="text" placeholder="{{ (ns+'.manage.username.input') | translate }}"
                                    class="form-control" name="username"
-                                   ng-model="profile.username" ng-minlength="3" ng-maxlength="20" required>
+                                   ng-model="profile.userName" ng-minlength="3" ng-maxlength="20" required>
                             <div class="m-t-xs" ng-show="formProfile.username.$invalid && formProfile.username.$dirty">
                                 <small class="text-danger help-block" ng-show="formProfile.username.$error.required">
                                     {{ (ns+'.manage.username.error.required') | translate }}
@@ -26,7 +26,7 @@
                             <label>{{ (ns+'.manage.firstname.label') | translate }}</label>
                             <input type="text" placeholder="{{ (ns+'.manage.firstname.input') | translate }}"
                                    class="form-control" name="firstname"
-                                   ng-model="profile.firstname" required>
+                                   ng-model="profile.firstName" required>
                             <div class="m-t-xs" ng-show="formProfile.firstname.$invalid && formProfile.firstname.$dirty">
                                 <small class="text-danger help-block" ng-show="formProfile.firstname.$error.required">
                                     {{ (ns+'.manage.firstname.error.required') | translate }}
@@ -37,7 +37,7 @@
                             <label>{{ (ns+'.manage.lastname.label') | translate }}</label>
                             <input type="text" placeholder="{{ (ns+'.manage.lastname.input') | translate }}"
                                    class="form-control" name="lastname"
-                                   ng-model="profile.lastname" required>
+                                   ng-model="profile.lastName" required>
                             <div class="m-t-xs" ng-show="formProfile.lastname.$invalid && formProfile.lastname.$dirty">
                                 <small class="text-danger help-block" ng-show="formProfile.lastname.$error.required">
                                     {{ (ns+'.manage.lastname.error.required') | translate }}

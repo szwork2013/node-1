@@ -36,5 +36,26 @@ module.exports = (function() {
     });
   };
 
+  schema.statics.findByIdAndUpdate = function(profile, cb) {
+    var model = this;
+
+    model.findById(profile.id, function (err, user) {
+      if (err) {
+        cb(err);
+      } else {
+        if (profile.userName) {
+          user.name.userName = profile.userName;
+        }
+        if (profile.firstName) {
+          user.name.firstName = profile.firstName;
+        }
+        if (profile.lastName) {
+          user.name.lastName = profile.lastName;
+        }
+        user.save(cb);
+      }
+    });
+  };
+
   return mongoose.model('User', schema);
 })();
