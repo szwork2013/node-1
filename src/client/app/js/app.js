@@ -61,6 +61,7 @@ app.config(require('./config'))
           }
         } else {
           store.remove('token');
+          store.remove('profile');
           $location.path('/');
         }
       }
