@@ -1,10 +1,14 @@
 'use strict';
 
-var moment = require('moment');
-var merge = require('merge');
-
 module.exports = {
   getSocket: function(io, id) {
-    // todo io.sockets.client()
+    var result = "test";
+    io.sockets.sockets.forEach(function(socket) {
+      if (socket.user._id.toString() == id.toString()) {
+        result = socket;
+      }
+    });
+
+    return result;
   }
 };
