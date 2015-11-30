@@ -14,6 +14,7 @@ require('angular-storage');
 require('angular-cookies');
 require('angular-jwt');
 require('ng-focus-if');
+require('oclazyload');
 require('pace').start();
 
 // Internal
@@ -25,6 +26,7 @@ var app = angular.module('corpnet', [
   'ui.router',
   'ui.bootstrap',
   'ui.gravatar',
+  'oc.lazyLoad',
   'corpnet.controllers',
   'corpnet.directives',
   'corpnet.socket-io',

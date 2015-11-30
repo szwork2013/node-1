@@ -42,7 +42,6 @@ var browserDependencies = [
   'angular-jtw',
   'angular-storage',
   'auth0-angular',
-  'ion-rangeslider',
   'angular-translate',
   'bootstrap-ui',
   'jquery',
@@ -51,9 +50,7 @@ var browserDependencies = [
   'metismenu',
   'oclazyload',
   'pace',
-  'sweetalert',
   'toastr',
-  'moment',
   'ng-focus-if',
 ];
 

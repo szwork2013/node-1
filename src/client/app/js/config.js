@@ -3,14 +3,25 @@
 var env = require('./env');
 
 module.exports = function (
-  $stateProvider, $urlRouterProvider, $translateProvider, authProvider, jwtInterceptorProvider, $httpProvider
+  $stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $translateProvider, authProvider, jwtInterceptorProvider,
+  $httpProvider
 ) {
+
+  $ocLazyLoadProvider.config({
+    debug: true
+  });
+
   $stateProvider
     .state('app', {
       abstract: true,
       url: '/app',
       templateUrl: env.templatePath('common/content.html'),
       data: { includes: true, requiresLogin: true },
+      resolve: {
+        loadPlugin: function($ocLazyLoad) {
+          return $ocLazyLoad.load([]);
+        }
+      }
     })
     .state('app.home', {
       url: '/home',
