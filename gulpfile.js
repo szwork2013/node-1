@@ -17,6 +17,8 @@ plugins.mainBowerFiles = require('main-bower-files');
 plugins.less = require('gulp-less');
 plugins.concatCss = require('gulp-concat-css');
 plugins.minifyCss = require('gulp-minify-css');
+plugins.minifyHtml = require('gulp-minify-html');
+plugins.angularTemplateCache = require('gulp-angular-templatecache');
 
 var tasksMapper = {
   'pre-clean': [],
@@ -30,6 +32,7 @@ var tasksMapper = {
   'less-variable': ['node-copy'],
   'less-compile': ['less-variable'],
   'css': ['less-compile'],
+  'html': [],
 };
 
 var browserDependencies = [
@@ -64,7 +67,7 @@ Object.keys(tasksMapper).forEach(function(task) {
 
 // Build tasks
 gulp.task('javascript', ['vendor', 'app']);
-gulp.task('install', ['javascript', 'css'], getTask('post-clean'));
+gulp.task('install', ['html', 'javascript', 'css'], getTask('post-clean'));
 gulp.task('default', ['browser-sync'], getTask('watch'));
 
 function getTask(task) {

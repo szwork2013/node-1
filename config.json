@@ -22,6 +22,9 @@
   "main": "app.js",
   "path": {
     "public": "./public",
+    "client": {
+      "views": "./public/views"
+    },
     "server": {
       "controller": "./src/server/controllers",
       "socket": "./src/server/sockets",
