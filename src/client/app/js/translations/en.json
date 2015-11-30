@@ -20,7 +20,8 @@
       "accounts": "Account",
       "account": {
         "profile": "Profile",
-        "contact": "Contact"
+        "contact": "Contact",
+        "manage": "Manage"
       }
     },
     "right-sidebar": {
@@ -32,6 +33,11 @@
       "submit": "Send"
     },
     "footer": {}
+  },
+  "account": {
+    "manage": {
+        
+    }
   },
   "login": {
     "welcome": "Welcome to CorpNet",
